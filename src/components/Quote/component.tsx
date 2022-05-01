@@ -29,11 +29,11 @@ export function Quote({
 }: QuoteProps): ReactElement {
   return (
     <View style={customStyles?.section}>
-      <FontAwesome5 name='quote-left' color={'red'} style={styles.quoteIcon} />
+      <FontAwesome5 name='quote-left' color={variables.color.primary} style={styles.quoteIcon} />
       <Text style={[styles.quote, customStyles?.quote]}>
         {quote}
       </Text>
-      <FontAwesome5 name='quote-right' color={'red'} style={[styles.quoteIcon, styles.quoteIconTrailing]} />
+      <FontAwesome5 name='quote-right' color={variables.color.primary} style={[styles.quoteIcon, styles.quoteIconTrailing]} />
       <Text style={[styles.quoteAuthor, customStyles?.quoteAuthor]}>
         {`—${author}`}
       </Text>

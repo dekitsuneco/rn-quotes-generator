@@ -31,7 +31,7 @@ export function Icon({
       onPress={handlePress}
       style={[styles.iconTouchable, customStyles]}
     >
-      <FontAwesome5 name={icon} size={22} color={'red'} {...iconProps} />
+      <FontAwesome5 name={icon} size={22} color={variables.color.primary} {...iconProps} />
     </TouchableOpacity>
   );
 }
