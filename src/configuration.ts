@@ -1,4 +1,5 @@
 export const API_URL = 'https://api.quotable.io/random';
+export const SHARE_URL = 'https://twitter.com/intent/tweet?text=';
 export const LANGUAGE = 'en-US';
 
 export interface APIData {

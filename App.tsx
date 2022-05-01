@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { Linking, StyleSheet, TextInput, View } from 'react-native';
 import { Card } from './src/components/Card';
 import * as Speech from 'expo-speech';
 import * as Clipboard from 'expo-clipboard';
 import SnackBar from 'react-native-snackbar-component';
 import { variables } from './src/styles';
-import { API_URL, LANGUAGE, APIData } from './src/configuration';
+import { API_URL, LANGUAGE, APIData, SHARE_URL } from './src/configuration';
 
 export default function App() {
   const [quote, setQuote] = useState('');
@@ -59,7 +59,13 @@ export default function App() {
 
     setIsVisibleSnackbar(true);
     setTimeout(() => setIsVisibleSnackbar(false), 1500);
-  }
+  };
+
+  const tweet = () => {
+    const urlForTweeting = `${SHARE_URL}${quote}`;
+    
+    Linking.openURL(urlForTweeting);
+  };
 
   return (
     <View style={styles.container}>
@@ -72,6 +78,7 @@ export default function App() {
         speaking={isSpeaking}
         onSpeak={speak}
         onCopy={copyToClipboard}
+        onTweet={tweet}
         style={styles.card}
         onRefreshClick={handleRefrechClick(API_URL)}
       />
