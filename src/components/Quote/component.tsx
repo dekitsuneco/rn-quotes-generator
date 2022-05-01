@@ -42,7 +42,6 @@ export function Quote({
 }
 
 const styles = StyleSheet.create({
-  section: {},
   quote: {
     marginBottom: 10,
     color: variables.color.textInverse,

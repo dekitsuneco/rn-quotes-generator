@@ -21,8 +21,8 @@ export function AppButton({
   return (
     <TouchableOpacity 
       onPress={handlePress}
-      style={[styles.button, customStyles.button]}>
-      <Text style={[styles.title, customStyles.title]}>
+      style={[styles.button, customStyles?.button]}>
+      <Text style={[styles.title, customStyles?.title]}>
         {title}
       </Text>
     </TouchableOpacity>

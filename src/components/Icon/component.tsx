@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { 
-  Text, 
   TouchableOpacity,
   StyleSheet, 
   ColorValue, 

@@ -69,10 +69,12 @@ export function Card({
             : {}
           }
         />
-        <Icon icon={'copy'} 
+        <Icon 
+          icon={'copy'} 
           onPress={handleCopy}
         />
-        <Icon icon={'twitter'} 
+        <Icon 
+          icon={'twitter'} 
           onPress={handleTweet}
         />
       </View>
