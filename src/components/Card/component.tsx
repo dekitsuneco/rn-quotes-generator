@@ -12,6 +12,7 @@ interface CardProps {
   loading: boolean;
   speaking: boolean;
   onSpeak: () => void;
+  onCopy: () => void;
   onRefreshClick: () => Promise<void>;
   style?: StyleProp<ViewStyle>;
 }
@@ -22,6 +23,7 @@ export function Card({
   loading: isLoading,
   speaking: isSpeaking,
   onSpeak: handleSpeach,
+  onCopy: handleCopy,
   onRefreshClick: handleClick,
   style: customStyles = {}
 }: CardProps): ReactElement {
@@ -66,7 +68,7 @@ export function Card({
           }
         />
         <Icon icon={'copy'} 
-          onPress={() => {}}
+          onPress={handleCopy}
         />
         <Icon icon={'twitter'} 
           onPress={() => {}}

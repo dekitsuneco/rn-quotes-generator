@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import { Card } from './src/components/Card';
 import * as Speech from 'expo-speech';
+import * as Clipboard from 'expo-clipboard';
 import { variables } from './src/styles';
 import { API_URL, LANGUAGE, APIData } from './src/configuration';
 
@@ -36,7 +37,7 @@ export default function App() {
   const handleRefrechClick = (url: string) => () => fetchQuote(url);
 
   useEffect(() => {
-    //fetchQuote(API_URL);
+    fetchQuote(API_URL);
   }, []);
 
   const speak = (): void => {
@@ -48,6 +49,10 @@ export default function App() {
         onStart: () => setIsSpeaking(true),
         onDone: () => setIsSpeaking(false),
       });
+  };
+
+  const copyToClipboard = (): void => {
+    Clipboard.setString(quote);
   }
 
   return (
@@ -60,9 +65,11 @@ export default function App() {
         loading={isLoading}
         speaking={isSpeaking}
         onSpeak={speak}
+        onCopy={copyToClipboard}
         style={styles.card}
         onRefreshClick={handleRefrechClick(API_URL)}
       />
+      <TextInput style={{width: 150, height: 50, backgroundColor: 'red', marginTop: 10}} />
     </View>
   );
 }
