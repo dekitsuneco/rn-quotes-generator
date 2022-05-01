@@ -16,17 +16,22 @@ interface IconCharProps {
 
 interface IconProps {
   icon: string;
+  onPress: () => void;
   iconProps?: IconCharProps;
   style?: StyleProp<ViewStyle>;
 }
 
 export function Icon({
   icon,
+  onPress: handlePress,
   iconProps,
   style: customStyles = {},
 }: IconProps): ReactElement {
   return (
-    <TouchableOpacity style={[styles.iconTouchable, customStyles]}>
+    <TouchableOpacity
+      onPress={handlePress}
+      style={[styles.iconTouchable, customStyles]}
+    >
       <FontAwesome5 name={icon} size={22} color={'red'} {...iconProps} />
     </TouchableOpacity>
   );

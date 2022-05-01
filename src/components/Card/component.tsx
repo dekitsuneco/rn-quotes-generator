@@ -10,6 +10,8 @@ interface CardProps {
   quote: string;
   author: string;
   loading: boolean;
+  speaking: boolean;
+  onSpeak: () => void;
   onRefreshClick: () => Promise<void>;
   style?: StyleProp<ViewStyle>;
 }
@@ -18,6 +20,8 @@ export function Card({
   quote,
   author,
   loading: isLoading,
+  speaking: isSpeaking,
+  onSpeak: handleSpeach,
   onRefreshClick: handleClick,
   style: customStyles = {}
 }: CardProps): ReactElement {
@@ -47,9 +51,26 @@ export function Card({
         onClick={handleClick}
       />
       <View style={styles.iconBar}>
-        <Icon icon={'volume-up'} />
-        <Icon icon={'copy'} />
-        <Icon icon={'twitter'} />
+        <Icon 
+          icon={'volume-up'}
+          onPress={handleSpeach}
+          style={
+            isSpeaking
+            ? speachIconStyles.touchable
+            : {}
+          }
+          iconProps={
+            isSpeaking
+            ? { color: speachIconStyles.icon.color }
+            : {}
+          }
+        />
+        <Icon icon={'copy'} 
+          onPress={() => {}}
+        />
+        <Icon icon={'twitter'} 
+          onPress={() => {}}
+        />
       </View>
     </View>
   );
@@ -86,5 +107,14 @@ const indicatorStyles = StyleSheet.create({
 const buttonStyles = StyleSheet.create({
   button: {
     marginBottom: 20,
+  },
+});
+
+const speachIconStyles = StyleSheet.create({
+  touchable: {
+    backgroundColor: variables.color.primary,
+  },
+  icon: {
+    color: variables.color.text,
   },
 });
